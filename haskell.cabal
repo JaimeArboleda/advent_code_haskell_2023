@@ -26,6 +26,7 @@ source-repository head
 library
   exposed-modules:
       DayOne
+      DayThree
       DayTwo
   other-modules:
       Paths_haskell
@@ -38,6 +39,7 @@ library
       base >=4.7 && <5
     , containers
     , split
+    , text
     , transformers
   default-language: Haskell2010
 
@@ -55,6 +57,7 @@ executable haskell-exe
     , containers
     , haskell
     , split
+    , text
     , transformers
   default-language: Haskell2010
 
@@ -73,5 +76,6 @@ test-suite haskell-test
     , containers
     , haskell
     , split
+    , text
     , transformers
   default-language: Haskell2010

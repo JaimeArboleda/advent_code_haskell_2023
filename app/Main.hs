@@ -1,7 +1,8 @@
 module Main where
 
-import DayOne
-import DayTwo
+import DayOne (getCalibration, digitsMap, fullMap)
+import DayTwo (parseColors, isLineValid, getPowerLine)
+import DayThree (readInput, getNumbers, filterNumbers, getValue, getGears, gearValue)
 import System.Environment
 import Data.Maybe
 
@@ -25,10 +26,25 @@ dayTwo = do
   let powerLines = map getPowerLine (lines dayTwoInput)
   print (sum powerLines)
 
+dayThree :: IO ()
+dayThree = do
+  dayThree <- readFile "data/day3/input.txt"
+  let input = readInput dayThree
+  let numbers = getNumbers input
+  let filteredNumbers = filterNumbers input numbers
+  print (sum $ map getValue filteredNumbers)
+  let gears = getGears input numbers 
+  print gears
+  print (sum $ map gearValue gears)
+
+
+
+
 main :: IO ()
 main = do
   a <- getArgs
   case head a of
     "day1" -> dayOne
     "day2" -> dayTwo
+    "day3" -> dayThree
     otherwise -> print "Not implemented"
