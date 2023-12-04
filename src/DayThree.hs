@@ -110,3 +110,15 @@ getGears input numbers = getGearsRec input numbers 0 [] where
               otherwise -> getGearsRec input numbers newPos gears
         Nothing -> gears
 
+
+dayThree :: Bool -> IO ()
+dayThree test = do 
+  let fileName = if test then "data/day3/test.txt" else "data/day3/input.txt"
+  dayInput <- readFile fileName
+  let input = readInput dayInput
+  let numbers = getNumbers input
+  let filteredNumbers = filterNumbers input numbers
+  print (sum $ map getValue filteredNumbers)
+  let gears = getGears input numbers 
+  print gears
+  print (sum $ map gearValue gears)

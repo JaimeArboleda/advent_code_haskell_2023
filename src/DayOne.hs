@@ -44,3 +44,16 @@ getCalibration :: Map.Map String Int -> String -> Int
 getCalibration map str = let 
     ParseState _ _ numbers = snd $ runState (updateAll str) (buildInitialState map)
     in (head numbers) * 10 + (last numbers)
+
+
+dayOne :: Bool -> IO ()
+dayOne test = do 
+  let fileName = if test then "data/day1/test.txt" else "data/day1/input.txt"
+  dayInput <- readFile fileName
+  let fileLines = lines dayInput
+  let calibrations1 = map (getCalibration digitsMap) fileLines
+  let calibrations2 = map (getCalibration fullMap) fileLines
+  print "First sum"
+  print (sum calibrations1)
+  print "Second sum"
+  print (sum calibrations2)

@@ -5,6 +5,7 @@ import Data.Char
 import Data.List
 import qualified Data.Map as Map
 import Data.List.Split (splitOn)
+import Data.Maybe
 
 data Color = Green | Blue | Red deriving (Eq, Read, Show, Ord)
 readColor :: String -> Color
@@ -53,3 +54,14 @@ getPowerLine str = let
   minBox = foldr combine (parseColors "0 red, 0 blue, 0 green") draws where
     combine draw1 draw2 = Map.mapWithKey (\k v -> max (Map.findWithDefault 0 k draw1) v) draw2
   in foldr (*) 1 $ Map.elems minBox
+
+
+dayTwo :: Bool -> IO ()
+dayTwo test = do 
+  let fileName = if test then "data/day2/test.txt" else "data/day2/input.txt"
+  dayInput <- readFile fileName
+  let box = parseColors "12 red, 13 green, 14 blue"
+  let checkLines = map (isLineValid box) (lines dayInput)
+  print (sum $ catMaybes checkLines)
+  let powerLines = map getPowerLine (lines dayInput)
+  print (sum powerLines)
