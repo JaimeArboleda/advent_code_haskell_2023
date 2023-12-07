@@ -28,10 +28,12 @@ library
       DayFive
       DayFour
       DayOne
+      DaySeven
       DaySix
       DayThree
       DayTwo
       ParserUtils
+      Utils
   other-modules:
       Paths_haskell
   autogen-modules:

@@ -59,3 +59,6 @@ trim input = reverse flippedTrimmed
     trimStart = dropWhile isSpace input
     flipped = reverse trimStart
     flippedTrimmed = dropWhile isSpace flipped
+
+--joneOf :: String -> Parser Char
+--oneOf str = chars = satisfy (\c -> elem c str)
