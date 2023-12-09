@@ -29,6 +29,9 @@ lexeme = L.lexeme sc
 integer :: Parser Int
 integer = lexeme L.decimal
 
+signedInteger :: Parser Int
+signedInteger = L.signed sc integer
+
 symbol :: String -> Parser String
 symbol = L.symbol sc
 
@@ -46,9 +49,6 @@ dot = symbol "."
 
 pipe :: Parser String
 pipe = symbol "|"
-
-parseNums :: Parser [Int]
-parseNums = many integer
 
 isEmpty :: String -> Bool
 isEmpty = all isSpace

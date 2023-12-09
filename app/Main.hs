@@ -8,6 +8,7 @@ import DayFive (dayFive)
 import DaySix (daySix)
 import DaySeven (daySeven)
 import DayEight (dayEight)
+import DayNine (dayNine)
 import System.Environment
 
 main :: IO ()
@@ -24,4 +25,5 @@ main = do
     "day6" -> daySix test
     "day7" -> daySeven test
     "day8" -> dayEight test
+    "day9" -> dayNine test
     otherwise -> print "Not implemented"
